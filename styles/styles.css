@@ -35,16 +35,17 @@ html{
 .notes > *{
     box-sizing: border-box;
     padding: 4px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
     background-color: var(--background-color);
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
 }
 .notes__header{
     grid-area: header;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 4px;
+    gap: 8px;
     box-sizing: border-box;
     padding: 8px;
     border-radius: 10px;
@@ -80,17 +81,21 @@ html{
     text-align: end;
     color: var(--background-color);
 }
-.notes h2{
+.notes label{
     font-size: var(--md);
+    font-weight: 700;
     margin-bottom: 2px;
 }
-
 .notes textarea{
     width: 100%;
     box-sizing: border-box;
 }
 .notes__cue{
     grid-area: cue;
+}
+.notes__dropdown{
+    display: flex;
+    flex-direction: column;
 }
 .notes__dropdown textarea{
     width: 100%;
@@ -102,6 +107,22 @@ html{
 .notes__resume{
     grid-area: footer;
 }
+.notes__download-button{
+    display: inline-block;
+    height: 45px;
+    min-width: 45px;
+    border: 2px solid var(--background-color);
+    border-radius: 5px;
+    color: var(--background-page);
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+.notes__download-button:hover{
+    background-color: var(--secondary-color);
+}
+.notes__download-button i{
+    font-size: 28px;
+}
 
 @media(max-width: 480px){
     .notes__header{
@@ -109,10 +130,23 @@ html{
     }
     .notes{
         grid-template-columns: 1fr;
-        grid-template-areas: 
+        grid-template-areas:
         "header"
         "main"
         "cue"
         "footer";
+    }
+    .notes__download-button{
+        width: 60px;
+        height: 60px;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        border-radius: 50%;
+        border: 4px double;
+        box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
+    }
+    .notes__download-button i{
+        font-size: 36px;
     }
 }
