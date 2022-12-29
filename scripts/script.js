@@ -20,7 +20,7 @@ function saveNote(content, name) {
 }
 
 function createNote(){
-    let noteElements = [
+    let noteElements =
 `Título: ${noteTitle.value}
 Tema/Materia: ${noteTopic.value}
 Fecha: ${noteDate.value}
@@ -37,8 +37,7 @@ ${noteQuestions.value}
 
 Resumen:
 ${noteResume.value}`
-    ]
-    saveNote(noteElements, `note${noteDate.value}${noteTitle.value}.txt`);
+saveNote(noteElements, `note${noteDate.value ? `-${noteDate.value}` : ``}${noteTitle.value ? `-${noteTitle.value}` : ``}.txt`)
 }
 
 btnDownload.addEventListener("click", createNote)
