@@ -8,7 +8,8 @@ const noteInputNotes = document.getElementById("cornell-notes")
 const noteInputResume = document.getElementById("cornell-resume")
 const noteInputFileName = document.getElementById("cornell-file-name")
 
-const btnDownload = document.getElementById("download-note")
+const btnDownloadTxt = document.getElementById("download-note-txt")
+const btnDownloadMd = document.getElementById("download-note-md")
 
 class Note{
     constructor(title, topic, date, terms, ideas, questions, notes, resume, fileName){
@@ -22,29 +23,54 @@ class Note{
         this.resume = resume
         this.fileName = fileName
     }
-    createNote() {
+    createNoteTxt() {
         return `Título: ${this.title}
-        Tema/Materia: ${this.topic}
-        Fecha: ${this.date}
+Tema/Materia: ${this.topic}
+Fecha: ${this.date}
 
-        Notas:
-            ${this.notes}
+Notas:
+    ${this.notes}
 
-        Glosario:
-            ${this.terms}
-        Ideas principales:
-            ${this.ideas}
-        Preguntas:
-            ${this.questions}
+Glosario:
+    ${this.terms}
+Ideas principales:
+    ${this.ideas}
+Preguntas:
+    ${this.questions}
 
-        Resumen:
-            ${this.resume}`
+Resumen:
+    ${this.resume}`
     }
-    createFileName(){
+    createNoteMd() {
+        return `# ${this.title}
+
+## *Tema:* ${this.topic}
+
+## *Fecha:* ${this.date}
+
+***
+## Notas:
+${this.notes}
+
+***
+## Glosario:
+${this.terms}
+
+## Ideas principales:
+${this.ideas}
+
+## Preguntas:
+${this.questions}
+
+***
+## Resumen:
+${this.resume}`
+    }
+    createFileName(extesion){
         if (this.fileName){
-            return `${this.fileName}.txt`
+            return `${this.fileName}.${extesion}`
         } else {
-            return `note${this.date ? `-${this.date}` : ``}${this.title ? `-${this.title}` : ``}.txt`
+            return `note${this.date ? `-${this.date}` : ``}${this.title ? `-${this.title}` : ``}.${extesion}`
         }
     }
 }
@@ -58,9 +84,8 @@ function saveNote(content, name) {
     a.click()
     URL.revokeObjectURL(url)
 }
-
-btnDownload.addEventListener("click", () => {
-    actualNote = new Note(
+function stageNote(){
+    return new Note(
         noteInputTitle.value,
         noteInputTopic.value,
         noteInputDate.value,
@@ -71,6 +96,12 @@ btnDownload.addEventListener("click", () => {
         noteInputResume.value,
         noteInputFileName.value
     )
-    saveNote(actualNote.createNote(), actualNote.createFileName())
 }
-)
+btnDownloadTxt.addEventListener("click", () => {
+    let stagedNote = stageNote()
+    saveNote(stagedNote.createNoteTxt(), stagedNote.createFileName("txt"))
+})
+btnDownloadMd.addEventListener("click", () => {
+    let stagedNote = stageNote()
+    saveNote(stagedNote.createNoteMd(), stagedNote.createFileName("md"))
+})
