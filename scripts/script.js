@@ -22,33 +22,33 @@ class Note{
         this.resume = resume
         this.fileName = fileName
     }
-}
+    createNote() {
+        return `Título: ${this.title}
+        Tema/Materia: ${this.topic}
+        Fecha: ${this.date}
 
-function createNote(n){
-return `Título: ${n.title}
-Tema/Materia: ${n.topic}
-Fecha: ${n.date}
+        Notas:
+            ${this.notes}
 
-Notas:
-    ${n.notes}
+        Glosario:
+            ${this.terms}
+        Ideas principales:
+            ${this.ideas}
+        Preguntas:
+            ${this.questions}
 
-Glosario:
-    ${n.terms}
-Ideas principales:
-    ${n.ideas}
-Preguntas:
-    ${n.questions}
-
-Resumen:
-    ${n.resume}`
-}
-function createFileName(n){
-    if (n.fileName){
-        return `${n.fileName}.txt`
-    } else {
-        return `note${n.date ? `-${n.date}` : ``}${n.title ? `-${n.title}` : ``}.txt`
+        Resumen:
+            ${this.resume}`
+    }
+    createFileName(){
+        if (this.fileName){
+            return `${this.fileName}.txt`
+        } else {
+            return `note${this.date ? `-${this.date}` : ``}${this.title ? `-${this.title}` : ``}.txt`
+        }
     }
 }
+
 function saveNote(content, name) {
     const a = document.createElement("a")
     const file = new Blob([content], {type: 'text/plain'})
@@ -71,6 +71,6 @@ btnDownload.addEventListener("click", () => {
         noteInputResume.value,
         noteInputFileName.value
     )
-    saveNote(createNote(actualNote), createFileName(actualNote))
+    saveNote(actualNote.createNote(), actualNote.createFileName())
 }
 )
