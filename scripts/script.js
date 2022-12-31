@@ -11,6 +11,33 @@ const noteInputFileName = document.getElementById("cornell-file-name")
 const btnDownloadTxt = document.getElementById("download-note-txt")
 const btnDownloadMd = document.getElementById("download-note-md")
 
+//Dark Mode
+const btnDarkMode = document.getElementById("dark-mode-btn")
+btnDarkMode.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark-mode");
+    document.documentElement.classList.toggle("light-mode");
+});
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+if (darkModeMediaQuery.matches) {
+    // El modo oscuro está activado en el dispositivo del usuario
+    document.documentElement.classList.toggle("dark-mode");
+} else {
+    // El modo oscuro no está activado en el dispositivo del usuario
+    document.documentElement.classList.toggle("light-mode");
+}
+darkModeMediaQuery.addEventListener('change', (event) => {
+    if (event.matches) {
+        // El usuario ha activado el modo oscuro en su dispositivo
+        document.documentElement.classList.toggle("dark-mode");
+    document.documentElement.classList.toggle("light-mode");
+    } else {
+        // El usuario ha desactivado el modo oscuro en su dispositivo
+        document.documentElement.classList.toggle("light-mode");
+        document.documentElement.classList.toggle("dark-mode");
+    }
+});
+//Fin Dark Mode
+
 class Note{
     constructor(title, topic, date, terms, ideas, questions, notes, resume, fileName){
         this.title = title
@@ -29,17 +56,17 @@ Tema/Materia: ${this.topic}
 Fecha: ${this.date}
 
 Notas:
-    ${this.notes}
+${this.notes}
 
 Glosario:
-    ${this.terms}
+${this.terms}
 Ideas principales:
-    ${this.ideas}
+${this.ideas}
 Preguntas:
-    ${this.questions}
+${this.questions}
 
 Resumen:
-    ${this.resume}`
+${this.resume}`
     }
     createNoteMd() {
         return `# ${this.title}

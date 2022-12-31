@@ -12,22 +12,18 @@
         <script src="https://kit.fontawesome.com/b28f325447.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <article class="external-content">Contenido (texto, video, web)</article>
         <main class="notes">
             <header class="notes__header">
-            <input id="cornell-file-name" class="notes__title" placeholder="Nombre de archivo"></input>
-            <input id="cornell-title" class="notes__title" placeholder="Nombre de la nota"></input>
-            <div class="notes__data">
-                <input id="cornell-topic" class="notes__topic" placeholder="Tema/Materia"></input>
-                <input id="cornell-date" class="notes__date" type="date" placeholder="Fecha"></input>
-            </div>
-            <button class="notes__download-button" id="download-note-txt" title="Descargar nota">
-                <i class="fa-solid fa-file-arrow-down"></i>
-            </button>
-            <button class="notes__download-button" id="download-note-md" title="Descargar nota">
-                <i class="fa-solid fa-file-arrow-down"></i>
-            </button>
-        </header>
+                <input id="cornell-file-name" class="notes__title" placeholder="Nombre de archivo"></input>
+                <input id="cornell-title" class="notes__title" placeholder="Nombre de la nota"></input>
+                <div class="notes__data">
+                    <input id="cornell-topic" class="notes__topic" placeholder="Tema/Materia"></input>
+                    <input id="cornell-date" class="notes__date" type="date" placeholder="Fecha"></input>
+                </div>
+                <button class="notes__menu-button" title="Menú">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+            </header>
         <aside class="notes__cue">
             <section class="notes__dropdown">
                 <label for="cornell-terms">Glosario</label>
@@ -49,6 +45,20 @@
             <label for="cornell-resume">Resumen</label>
             <textarea id="cornell-resume" cols="auto" rows="6" placeholder="Sintetiza las ideas previas y determina lo más relevante para crear tu resumen."></textarea>
         </footer>
+        <aside>
+            <button class="notes__menu-button" id="dark-mode-btn">
+                <i class="fa-regular fa-lightbulb"></i>
+                <span>Dark mode</span>
+            </button>
+            <button class="notes__menu-button" id="download-note-txt">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Descargar .txt</span>
+            </button>
+            <button class="notes__menu-button" id="download-note-md">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Descargar .md</span>
+            </button>
+        </aside>
     </main>
     <script src="./scripts/script.js"></script>
 </body>
