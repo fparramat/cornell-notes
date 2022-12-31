@@ -132,7 +132,7 @@
 .notes__menu-button{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     gap: 4px;
     height: 45px;
     min-width: 45px;
@@ -148,10 +148,28 @@
 }
 .notes__menu-button i{
     font-size: 28px;
+    text-align: center;
 }
 
 #dark-mode-btn {
     cursor: pointer;
+}
+
+.menu__dialog{
+    min-width: 280px;
+    color: var(--primary-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+    text-align: center;
+}
+.menu__dialog .notes__menu-button{
+    justify-content: start;
+    padding: 8px 12px;
+    gap: 12px;
 }
 
 @media(max-width: 480px){
@@ -208,6 +226,9 @@
         color: var(--primary-dark);
         background-color: var(--primary-light);
         border-color: var(--primary-dark);
+    }
+    dialog{
+        color: var(--primary-dark);
     }
     .light-mode {
         --primary-base: #A68BC7;

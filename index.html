@@ -14,52 +14,58 @@
     <body>
         <main class="notes">
             <header class="notes__header">
-                <input id="cornell-file-name" class="notes__title" placeholder="Nombre de archivo"></input>
                 <input id="cornell-title" class="notes__title" placeholder="Nombre de la nota"></input>
                 <div class="notes__data">
                     <input id="cornell-topic" class="notes__topic" placeholder="Tema/Materia"></input>
                     <input id="cornell-date" class="notes__date" type="date" placeholder="Fecha"></input>
                 </div>
-                <button class="notes__menu-button" title="Menú">
+                <button class="notes__menu-button" title="Menú" onclick="window.notemenu.showModal()">
                     <i class="fa-solid fa-sliders"></i>
                 </button>
             </header>
-        <aside class="notes__cue">
-            <section class="notes__dropdown">
-                <label for="cornell-terms">Glosario</label>
-                <textarea id="cornell-terms" cols="auto" rows="6" placeholder="Si encuentras una palabra desconocida mientras estudias o lees, añádela a tu glosario personal para futuras consultas."></textarea>
+            <aside class="notes__cue">
+                <section class="notes__dropdown">
+                    <label for="cornell-terms">Glosario</label>
+                    <textarea id="cornell-terms" cols="auto" rows="6" placeholder="Si encuentras una palabra desconocida mientras estudias o lees, añádela a tu glosario personal para futuras consultas."></textarea>
+                </section>
+                <section class="notes__dropdown">
+                    <label for="cornell-ideas">Ideas principales</label>
+                    <textarea id="cornell-ideas" cols="auto" rows="6" placeholder="Anota aquí las ideas clave utilizando frases cortas y concisas."></textarea>
+                </section>
+                <section class="notes__dropdown">
+                    <label for="cornell-questions">Preguntas</label>
+                    <textarea id="cornell-questions" cols="auto" rows="6" placeholder="Anota aquí las preguntas que tengas sobre el material de estudio."></textarea>
+                </section>
+            </aside>
+            <section class="notes__main">
+                <textarea id="cornell-notes" cols="auto" rows="18" placeholder="Mientras lees o escuchas una conferencia o un material de estudio, anota las ideas clave y los detalles importantes en esta sección. Utiliza frases cortas y concisas para resumir las ideas clave y evita incluir información irrelevante o secundaria."></textarea>
             </section>
-            <section class="notes__dropdown">
-                <label for="cornell-ideas">Ideas principales</label>
-                <textarea id="cornell-ideas" cols="auto" rows="6" placeholder="Anota aquí las ideas clave utilizando frases cortas y concisas."></textarea>
-            </section>
-            <section class="notes__dropdown">
-                <label for="cornell-questions">Preguntas</label>
-                <textarea id="cornell-questions" cols="auto" rows="6" placeholder="Anota aquí las preguntas que tengas sobre el material de estudio."></textarea>
-            </section>
-        </aside>
-        <section class="notes__main">
-            <textarea id="cornell-notes" cols="auto" rows="18" placeholder="Mientras lees o escuchas una conferencia o un material de estudio, anota las ideas clave y los detalles importantes en esta sección. Utiliza frases cortas y concisas para resumir las ideas clave y evita incluir información irrelevante o secundaria."></textarea>
-        </section>
-        <footer class="notes__resume">
-            <label for="cornell-resume">Resumen</label>
-            <textarea id="cornell-resume" cols="auto" rows="6" placeholder="Sintetiza las ideas previas y determina lo más relevante para crear tu resumen."></textarea>
-        </footer>
-        <aside>
-            <button class="notes__menu-button" id="dark-mode-btn">
-                <i class="fa-regular fa-lightbulb"></i>
-                <span>Dark mode</span>
-            </button>
-            <button class="notes__menu-button" id="download-note-txt">
-                <i class="fa-solid fa-file-arrow-down"></i>
-                <span>Descargar .txt</span>
-            </button>
-            <button class="notes__menu-button" id="download-note-md">
-                <i class="fa-solid fa-file-arrow-down"></i>
-                <span>Descargar .md</span>
-            </button>
-        </aside>
-    </main>
-    <script src="./scripts/script.js"></script>
-</body>
+            <footer class="notes__resume">
+                <label for="cornell-resume">Resumen</label>
+                <textarea id="cornell-resume" cols="auto" rows="6" placeholder="Sintetiza las ideas previas y determina lo más relevante para crear tu resumen."></textarea>
+            </footer>
+            <dialog id="notemenu">
+                <div class="menu__dialog">
+                    <input id="cornell-file-name" class="notes__title" placeholder="Nombre de archivo"></input>
+                    <button class="notes__menu-button" id="download-note-txt">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span>Descargar en formato .txt</span>
+                    </button>
+                    <button class="notes__menu-button" id="download-note-md">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span>Descargar en formato .md</span>
+                    </button>
+                    <button class="notes__menu-button" id="dark-mode-btn">
+                        <i class="fa-regular fa-lightbulb"></i>
+                        <span>Dark mode</span>
+                    </button>
+                    <button class="notes__menu-button" onclick="window.notemenu.close()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Volver</span>
+                    </button>
+                </div>
+            </dialog>
+        </main>
+        <script src="./scripts/script.js"></script>
+    </body>
 </html>
