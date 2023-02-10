@@ -134,7 +134,6 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    height: 45px;
     min-width: 45px;
     border: none;
     border-radius: 8px;
@@ -142,6 +141,10 @@
     background-color: var(--primary-base);
     cursor: pointer;
     transition: 0.5s;
+    text-decoration: none;
+}
+.notes__header > .notes__menu-button{
+    height: 45px;
 }
 .notes__menu-button:hover{
     filter: brightness(1.15);
@@ -164,7 +167,6 @@
     justify-content: center;
     gap: 12px;
     padding: 12px;
-    text-align: center;
 }
 .menu__dialog .notes__menu-button{
     justify-content: start;
